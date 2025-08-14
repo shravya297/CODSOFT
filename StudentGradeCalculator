@@ -1,0 +1,46 @@
+package TASK2;
+	import java.util.Scanner;
+
+	public class Gradecalc{
+	    public static void main(String[] args) {
+	        Scanner sc = new Scanner(System.in);
+
+	        System.out.print("Enter the number of subjects: ");
+	        int numSubjects = sc.nextInt();
+
+	        double[] marks = new double[numSubjects];
+	        double totalMarks = 0;
+
+	        for (int i = 0; i < numSubjects; i++) {
+	            System.out.print("Enter marks for subject " + (i + 1) + " (out of 100): ");
+	            double score = sc.nextDouble();
+	            while (score < 0 || score > 100) {
+	                System.out.println("Invalid marks! Please enter between 0 and 100.");
+	                System.out.print("Enter marks for subject " + (i + 1) + " (out of 100): ");
+	                score = sc.nextDouble();
+	            } 
+	            marks[i] = score;
+	            totalMarks += score;
+	        }
+	        double averagePercentage = totalMarks / numSubjects;
+	        String grade;
+	        if (averagePercentage >= 90) {
+	            grade = "A+";
+	        } else if (averagePercentage >= 80) {
+	            grade = "A";
+	        } else if (averagePercentage >= 70) {
+	            grade = "B";
+	        } else if (averagePercentage >= 60) {
+	            grade = "C";
+	        } else if (averagePercentage >= 50) {
+	            grade = "D";
+	        } else {
+	            grade = "F";
+	        }
+	        System.out.println("\n----- Results -----");
+	        System.out.println("Total Marks: " + totalMarks);
+	        System.out.printf("Average Percentage: %.2f%%\n", averagePercentage);
+	        System.out.println("Grade: " + grade);
+	        sc.close();
+	    }
+	}
